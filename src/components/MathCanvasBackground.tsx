@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
-export const MathCanvasBackground: React.FC = () => {
+interface MathCanvasBackgroundProps {
+    theme?: 'dark' | 'light';
+}
+
+export const MathCanvasBackground: React.FC<MathCanvasBackgroundProps> = ({ theme = 'dark' }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
@@ -50,13 +54,14 @@ export const MathCanvasBackground: React.FC = () => {
         }
 
         let time = 0;
+        const isDark = theme === 'dark';
 
         const render = () => {
             time += 0.01;
             ctx.clearRect(0, 0, width, height);
 
             // Draw subtle coordinate grid lines
-            ctx.strokeStyle = 'rgba(56, 189, 248, 0.03)';
+            ctx.strokeStyle = isDark ? 'rgba(56, 189, 248, 0.03)' : 'rgba(2, 132, 199, 0.06)';
             ctx.lineWidth = 1;
             const gridSize = 80;
             for (let x = 0; x < width; x += gridSize) {
@@ -74,7 +79,7 @@ export const MathCanvasBackground: React.FC = () => {
 
             // Draw floating sine wave in the background
             ctx.beginPath();
-            ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
+            ctx.strokeStyle = isDark ? 'rgba(56, 189, 248, 0.05)' : 'rgba(2, 132, 199, 0.08)';
             ctx.lineWidth = 2;
             for (let x = 0; x < width; x += 5) {
                 const y = height * 0.5 + Math.sin(x * 0.005 + time) * 60 + Math.cos(x * 0.002 - time * 0.5) * 30;
@@ -100,7 +105,8 @@ export const MathCanvasBackground: React.FC = () => {
 
                     if (dist < 140) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 140)})`;
+                        const colorStr = isDark ? '56, 189, 248' : '2, 132, 199';
+                        ctx.strokeStyle = `rgba(${colorStr}, ${0.15 * (1 - dist / 140)})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(node.x, node.y);
                         ctx.lineTo(other.x, other.y);
@@ -111,13 +117,15 @@ export const MathCanvasBackground: React.FC = () => {
                 // Draw Node Dot
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(56, 189, 248, ${node.alpha + 0.2})`;
+                const dotColor = isDark ? '56, 189, 248' : '2, 132, 199';
+                ctx.fillStyle = `rgba(${dotColor}, ${node.alpha + 0.2})`;
                 ctx.fill();
 
                 // Draw Math Symbol occasionally
                 if (idx % 3 === 0) {
                     ctx.font = '12px Inter, monospace';
-                    ctx.fillStyle = `rgba(129, 140, 248, ${node.alpha * 0.7})`;
+                    const textColor = isDark ? '129, 140, 248' : '79, 70, 229';
+                    ctx.fillStyle = `rgba(${textColor}, ${node.alpha * 0.8})`;
                     ctx.fillText(node.symbol, node.x + 8, node.y - 8);
                 }
             });
@@ -131,7 +139,7 @@ export const MathCanvasBackground: React.FC = () => {
             window.removeEventListener('resize', handleResize);
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [theme]);
 
     return (
         <canvas
@@ -140,3 +148,4 @@ export const MathCanvasBackground: React.FC = () => {
         />
     );
 };
+

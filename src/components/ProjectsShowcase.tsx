@@ -28,10 +28,10 @@ export const ProjectsShowcase: React.FC = () => {
             description: 'An interactive web laboratory application built with Canvas 2D, React, and TypeScript. Features 9 dynamic simulations including pendulum dynamics, projectile vectors, DC circuits, and trigonometry graphs.',
             image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80',
             tags: ['React', 'TypeScript', 'Canvas 2D', 'Tailwind CSS', 'Framer Motion'],
-            githubUrl: 'https://github.com/Khumorakhon/fizmath-interactive-lab',
+            githubUrl: 'https://github.com/Mikakim900/fizmath-interactive-lab',
             demoUrl: '#',
             highlights: ['Real-time 60FPS physics vector rendering', 'Mathematical formula graphs with interactive sliders', 'Bilingual Uzbek & English user interface'],
-            metrics: '4.94 Math Algorithmic Precision'
+            metrics: '4.94 Math Precision'
         },
         {
             id: 'fergana-university',
@@ -41,7 +41,7 @@ export const ProjectsShowcase: React.FC = () => {
             description: 'A multi-page responsive institutional web platform for Fergana State University (fdu.uz). Features academic program catalog, news feed, faculty index, and responsive UI layout.',
             image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80',
             tags: ['Next.js', 'React', 'Tailwind CSS', 'SEO Optimization', 'TypeScript'],
-            githubUrl: 'https://github.com/Khumorakhon/fergana-state-university-portal',
+            githubUrl: 'https://github.com/Mikakim900/fergana-state-university-portal',
             demoUrl: '#',
             highlights: ['Fast SSR page loads with Next.js App Router', 'Comprehensive faculty & student service directory', 'Mobile-first responsive design system'],
             metrics: 'Production Quality Portal'
@@ -54,7 +54,7 @@ export const ProjectsShowcase: React.FC = () => {
             description: 'A modern interactive physics learning portal for secondary school students. Simulates Ohm\'s Law circuits, optical ray refraction, thermodynamics, and harmonic oscillators in real-time.',
             image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
             tags: ['React', 'Vite', 'Tailwind CSS', 'HTML5 Canvas', 'Lucide React'],
-            githubUrl: 'https://github.com/Khumorakhon/atomix-physics-laboratory',
+            githubUrl: 'https://github.com/Mikakim900/atomix-physics-laboratory',
             demoUrl: '#',
             highlights: ['Custom ray tracing optics simulation', 'Interactive electrical circuit builder', 'Data export & lab report generator'],
             metrics: 'Educational Platform'
@@ -63,13 +63,13 @@ export const ProjectsShowcase: React.FC = () => {
             id: 'vibrant-store',
             title: 'Tech Neon Store - E-Commerce Interface',
             category: 'ui',
-            categoryLabel: 'UI/UX & Glassmorphism',
+            categoryLabel: 'UI/UX & Glassmorphic Design',
             description: 'A dark-mode neon store interface featuring Glassmorphic product cards, dynamic filtering, cart state management, and glowing micro-animations.',
             image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
             tags: ['React', 'Tailwind CSS', 'Glassmorphism', 'Framer Motion'],
-            githubUrl: 'https://github.com/Khumorakhon/vibrant-neon-store',
+            githubUrl: 'https://github.com/Mikakim900/partfolio',
             demoUrl: '#',
-            highlights: ['Custom Glassmorphism UI tokens', 'Smooth hover lighting & glow animations', 'Instant instant cart calculation state'],
+            highlights: ['Custom Glassmorphism UI tokens', 'Smooth hover lighting & glow animations', 'Instant cart calculation state'],
             metrics: 'Modern UI Showcase'
         }
     ];
@@ -84,14 +84,14 @@ export const ProjectsShowcase: React.FC = () => {
 
                 {/* Section Header */}
                 <div className="text-center space-y-3 mb-12">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-mono text-cyan-300">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-500">
                         <FolderGit2 className="w-3.5 h-3.5" />
                         <span>PORTFOLIO SHOWCASE</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold">
                         Featured <span className="text-gradient">Projects</span>
                     </h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    <p className="opacity-80 max-w-2xl mx-auto text-sm sm:text-base">
                         Web applications, graphics simulations, and UI systems built with precision.
                     </p>
 
@@ -107,8 +107,8 @@ export const ProjectsShowcase: React.FC = () => {
                                 key={tab.id}
                                 onClick={() => setActiveCategory(tab.id as any)}
                                 className={`px-4 py-2 rounded-xl text-xs font-semibold font-mono transition-all cursor-pointer ${activeCategory === tab.id
-                                        ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30 font-bold'
-                                        : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
+                                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/30'
+                                    : 'glass-card opacity-80 hover:opacity-100 border'
                                     }`}
                             >
                                 {tab.label}
@@ -122,22 +122,22 @@ export const ProjectsShowcase: React.FC = () => {
                     {filteredProjects.map((project) => (
                         <div
                             key={project.id}
-                            className="glass-card rounded-2xl border border-slate-800 overflow-hidden group hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between"
+                            className="glass-card rounded-2xl border overflow-hidden group transition-all duration-300 flex flex-col justify-between"
                         >
                             {/* Image Container */}
                             <div className="relative h-52 overflow-hidden bg-slate-900">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
 
                                 <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-cyan-300 font-mono text-[10px] border border-cyan-500/30">
                                     {project.categoryLabel}
                                 </span>
 
-                                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-cyan-950/80 text-yellow-400 font-mono text-[10px] border border-yellow-500/30">
+                                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-slate-950/80 text-yellow-400 font-mono text-[10px] border border-yellow-500/30 font-bold">
                                     {project.metrics}
                                 </span>
                             </div>
@@ -145,10 +145,10 @@ export const ProjectsShowcase: React.FC = () => {
                             {/* Card Body */}
                             <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                                 <div>
-                                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
+                                    <h3 className="text-xl font-bold group-hover:text-cyan-500 transition-colors mb-2">
                                         {project.title}
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-slate-300 line-clamp-3 leading-relaxed mb-4">
+                                    <p className="text-xs sm:text-sm opacity-85 line-clamp-3 leading-relaxed mb-4">
                                         {project.description}
                                     </p>
 
@@ -157,7 +157,7 @@ export const ProjectsShowcase: React.FC = () => {
                                         {project.tags.map((tag, tIdx) => (
                                             <span
                                                 key={tIdx}
-                                                className="px-2 py-0.5 rounded bg-slate-900 text-slate-300 font-mono text-[10px] border border-slate-800"
+                                                className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-500 font-mono text-[10px] border border-cyan-500/20"
                                             >
                                                 #{tag}
                                             </span>
@@ -166,23 +166,23 @@ export const ProjectsShowcase: React.FC = () => {
                                 </div>
 
                                 {/* Actions */}
-                                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+                                <div className="pt-4 border-t border-slate-700/40 flex items-center justify-between gap-3">
                                     <a
                                         href={project.githubUrl}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+                                        className="flex items-center gap-1.5 text-xs opacity-75 hover:opacity-100 transition-colors"
                                     >
-                                        <FolderGit2 className="w-4 h-4 text-cyan-400" />
+                                        <FolderGit2 className="w-4 h-4 text-cyan-500" />
                                         <span>Repository</span>
                                     </a>
 
                                     <button
                                         onClick={() => setSelectedProject(project)}
-                                        className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-semibold transition-all cursor-pointer"
+                                        className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500/10 text-cyan-500 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-semibold transition-all cursor-pointer"
                                     >
                                         <Eye className="w-3.5 h-3.5" />
-                                        <span>View Interactive Demo</span>
+                                        <span>View Details</span>
                                     </button>
                                 </div>
                             </div>
@@ -200,12 +200,12 @@ export const ProjectsShowcase: React.FC = () => {
                         {/* Modal Header */}
                         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500">
                                     <Monitor className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white">{selectedProject.title}</h3>
-                                    <p className="text-xs text-cyan-400 font-mono">{selectedProject.categoryLabel}</p>
+                                    <h3 className="text-lg font-bold">{selectedProject.title}</h3>
+                                    <p className="text-xs text-cyan-500 font-mono">{selectedProject.categoryLabel}</p>
                                 </div>
                             </div>
 
@@ -277,3 +277,4 @@ export const ProjectsShowcase: React.FC = () => {
         </section>
     );
 };
+
